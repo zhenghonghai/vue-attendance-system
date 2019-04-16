@@ -1,167 +1,127 @@
 <template>
-    <div id="login" class="form" style="position:relative">
-         <!-- 登录表单 -->
-        <div class="form_login" style="heihgt:0;">
-            <form action="#">
-				<h1>登录表单</h1>
-				<div class="form_item">
-					<label for="username">用户名：</label>
-					<input type="text" name="username" id="username" placeholder="请输入用户名" required>
-				</div>
-				<div class="form_item">
-					<label for="password">密码：</label>
-					<input type="password" name="password" id="password" placeholder="请输入密码名" required>
-				</div>
-				<div class="form_item">
-					<input type="submit" value="登录">
-				</div>
-			</form>
-            <div class="info">没有账号？点击<span class="switch register_Btn">注册账号</span></div>
-        </div>
-        <!--注册表单-->
-        <div class="form_register" style="position:absolute">  
-            <form action="#">
-                <h1>注册表单</h1>
-                <div class="form_item">
-                    <label for="username">用户名：</label>
-                    <input type="text" name="username" id="username" placeholder="请输入用户名" required >
-                </div>
-                <div class="form_item">
-                    <label for="password">密码：</label>
-                    <input type="password" name="password" id="password" placeholder="请输入密码名" required>
-                </div>
-                <div class="form_item">
-                    <label for="email">电子邮箱：</label>
-                    <input type="email" name="email" id="email" placeholder="请输入电子邮件" required>
-                </div>
-                <div class="form_item">
-                    <label for="tel">电话：</label>
-                    <input type="tel" name="tel" id="tel" placeholder="请输入手机号码" required>
-                </div>
-                <div class="form_item">
-                    <input type="submit" value="注册">
-                </div>
-            </form>
-            <div class="info">已有账号？点击<span class="switch login_Btn">登录</span></div>
-        </div>
+  <!-- 登录表单 -->
+  <div id="login"
+    class="form">
+    <h1>登录表单</h1>
+    <div class="form_item">
+      <label>用户名：</label>
+      <input type="text"
+        v-model="form.username"
+        placeholder="请输入用户名"
+        required />
     </div>
+    <div class="form_item">
+      <label>密码：</label>
+      <input type="password"
+        v-model="form.password"
+        placeholder="请输入密码名"
+        required />
+    </div>
+    <div class="form_item">
+      <button @click="login">登录
+      </button>
+    </div>
+    <div class="info">没有账号？
+      <router-link to='register'>点击注册账号</router-link>
+    </div>
+  </div>
 </template>
 
 <script>
+import axios from 'axios'
 export default {
-    name: 'login',
-    data () {
-        return {
-            users: {
-                username: 'zhh',
-                password: '1234'
-            }
-        }
-    },
-    methods: {
-        
-
+  name: 'login',
+  data() {
+    return {
+      form: {
+        username: '',
+        password: ''
+      }
     }
-}
-window.onload=function(){
-    var form_login = document.querySelector('.form_login')
-    var form_register = document.querySelector('.form_register')
-    var switchBtns = document.querySelectorAll('.switch')
-
-    switchBtns.forEach(function(item){
-        item.addEventListener('click',function(){
-            if(this.innerText=='注册账号'){
-                addStyle(form_login,{ height: '0',transitionDelay:'0s'})
-                addStyle(form_register,{height: '548px',transitionDelay: '1.2s'})
-            }else if(this.innerText=='登录'){
-                addStyle(form_login,{ height: '422px', transitionDelay: '1.2s'})
-                addStyle(form_register,{height: '0',transitionDelay:'0s'})
-            }
-        })
-    })
-
-    function addStyle(ele,orignStyle){
-        for(var item in orignStyle){
-            if(ele){
-                ele.style[item] = orignStyle[item] 
-            }
-        }
+  },
+  methods: {
+    login() {
+      axios.get('/api/login').then(response => {
+        console.log(response)
+        console.log(this.form.username)
+        console.log(this.form.password)
+      })
     }
-   
+  }
 }
 </script>
 
 <style>
-html{
-    height: 100%;
+/* html {
+  height: 100%;
 }
-body{
-    /* background: url('./../assets/images/bg.jpg') no-repeat center/cover; */
+body {
+  background: url('../../assets/images/bg.jpg') no-repeat center/cover;
 }
-.form{
-    width: 500px;
-    height: 600px;
-    margin: 30px auto;
+.form {
+  width: 500px;
+  height: 600px;
+  margin: 30px auto;
 }
-.form_register,.form_login{
-    width: 500px;
-    background-color:rgba(0, 188, 212, 0.7);
-    border-radius: 5px;
-    box-shadow: 0 0 3px #ccc;  
-    overflow: hidden;
-    transition: height 1s;
+.form_register,
+.form_login {
+  width: 500px;
+  background-color: rgba(0, 188, 212, 0.7);
+  border-radius: 5px;
+  box-shadow: 0 0 3px #ccc;
+  overflow: hidden;
+  transition: height 1s;
 }
-.form_register{
-    height: 548px;
+.form_register {
+  height: 548px;
 }
 
-.form form{
-   padding: 25px 40px;
+.form form {
+  padding: 25px 40px;
 }
-.form .form_item{
-    display: flex;
-    margin: 25px 0;
-    vertical-align: middle;
+.form .form_item {
+  display: flex;
+  margin: 25px 0;
+  vertical-align: middle;
 }
-.form input{
-    outline: none;
-    text-indent: 10px;
-    flex: 1;
-    width: auto;
-    border: none;
-    border-radius: 3px;
-    height: 36px;
+.form input {
+  outline: none;
+  text-indent: 10px;
+  flex: 1;
+  width: auto;
+  border: none;
+  border-radius: 3px;
+  height: 36px;
 }
-.form form label{
-    width: 90px;
-    float: left;
-    line-height: 36px;
+.form form label {
+  width: 90px;
+  float: left;
+  line-height: 36px;
 }
-h1{
-    text-align: center;
-    padding: 0;;
-    margin: 30px 0 30px 0;
+h1 {
+  text-align: center;
+  padding: 0;
+  margin: 30px 0 30px 0;
 }
-.form form input[type='submit']{
-    background-color: rgba(244, 22, 7, 0.7);
-    color: aliceblue;
-    height: 45px;
-    font-size: 20px;
-    cursor:pointer;
-    margin-top: 20px;
+.form form input[type='submit'] {
+  background-color: rgba(244, 22, 7, 0.7);
+  color: aliceblue;
+  height: 45px;
+  font-size: 20px;
+  cursor: pointer;
+  margin-top: 20px;
 }
-.form .info{
-    text-align: center;
-    font-size: 14px;
-    margin-bottom: 20px;
+.form .info {
+  text-align: center;
+  font-size: 14px;
+  margin-bottom: 20px;
 }
-.form .info span{
-    color: crimson;
-    margin-left: 3px;
+.form .info span {
+  color: crimson;
+  margin-left: 3px;
 }
-.form .info span:hover{
-    cursor: pointer;
-    border-bottom: 1px solid crimson;
-    
-}
+.form .info span:hover {
+  cursor: pointer;
+  border-bottom: 1px solid crimson;
+} */
 </style>
