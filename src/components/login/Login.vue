@@ -41,7 +41,7 @@ export default {
   },
   methods: {
     login() {
-      axios.get('/api/login').then(response => {
+      axios.get('/api').then(response => {
         console.log(response)
         console.log(this.form.username)
         console.log(this.form.password)
