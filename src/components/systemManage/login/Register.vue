@@ -42,7 +42,6 @@
 
 <script>
 import systemManage from '../api'
-import axios from 'axios'
 export default {
   name: 'register',
   data() {
@@ -57,25 +56,20 @@ export default {
   },
   methods: {
     register() {
-      // axios
-      //   .get('/user', {
-      //     params: {
-      //       ID: 12345
-      //     }
-      //   })
-      //   .then(function(response) {
-      //     console.log(response)
-      //   })
-      //   .catch(function(error) {
-      //     console.log(error)
-      //   })
-      axios
-        .post('api/register', {
-          params: this.form
-        })
-        .then(response => {
-          console.log(response)
-        })
+      var params = {
+        username: this.form.username,
+        password: this.form.password,
+        email: this.form.email,
+        tel: this.form.tel
+      }
+      systemManage.register(params).then(response => {
+        if (response.data) {
+          alert('注册成功')
+          this.$router.push({ path: '/' })
+        } else {
+          alert('手机号已经注册过了，请更换手机号')
+        }
+      })
     }
   }
 }

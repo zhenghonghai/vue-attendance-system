@@ -7,6 +7,11 @@ import Ajax from '@/utils/fetch'
 import Qs from 'qs'
 
 const systemManage = {
+
+  /**
+   * 以后把所有方法放这里
+   */
+
   // 登录功能
   login(obj) {
     let data = obj
@@ -16,7 +21,15 @@ const systemManage = {
       params: data
     })
   },
-  // 以后把所有方法放这里
+  // 注册
+  register(obj) {
+    let data = obj
+    return Ajax({
+      url: '/api/register',
+      method: 'post',
+      params: data
+    })
+  },
 }
 
 export default systemManage

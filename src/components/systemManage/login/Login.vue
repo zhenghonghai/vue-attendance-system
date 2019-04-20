@@ -30,8 +30,6 @@
 
 <script>
 import systemManage from '../api'
-import axios from 'axios'
-import qs from 'qs'
 export default {
   name: 'login',
   data() {
@@ -49,13 +47,12 @@ export default {
         password: this.form.password
       }
       systemManage.login(params).then(response => {
-        console.log(response)
-        console.log(response.data)
-        let list = response.data
-        list.forEach(item => {
-          console.log(item)
-          console.log(item.username)
-        })
+        if (response.data) {
+          console.log('密码正确')
+          // this.$router.push({ path: 'register' })
+        } else {
+          alert('账号或密码错误')
+        }
       })
     }
   }

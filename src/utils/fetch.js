@@ -29,11 +29,11 @@ axios.interceptors.request.use(
       }
     }
     // 加时间戳
-    if (config.url.indexOf('?') < 1) {
-      config.url += '?time=' + new Date().getTime()
-    } else {
-      config.url += '&time=' + new Date().getTime()
-    }
+    // if (config.url.indexOf('?') < 1) {
+    //   config.url += '?time=' + new Date().getTime()
+    // } else {
+    //   config.url += '&time=' + new Date().getTime()
+    // }
     // 条件允许，携带token请求
     if (token && tokenFlag) {
       config.headers['X-Auth0-Token'] = token
