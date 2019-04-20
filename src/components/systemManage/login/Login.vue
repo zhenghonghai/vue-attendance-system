@@ -25,10 +25,13 @@
       <router-link to='register'>点击注册账号</router-link>
     </div>
   </div>
+
 </template>
 
 <script>
+import systemManage from '../api'
 import axios from 'axios'
+import qs from 'qs'
 export default {
   name: 'login',
   data() {
@@ -41,10 +44,18 @@ export default {
   },
   methods: {
     login() {
-      axios.get('/api').then(response => {
+      var params = {
+        username: this.form.username,
+        password: this.form.password
+      }
+      systemManage.login(params).then(response => {
         console.log(response)
-        console.log(this.form.username)
-        console.log(this.form.password)
+        console.log(response.data)
+        let list = response.data
+        list.forEach(item => {
+          console.log(item)
+          console.log(item.username)
+        })
       })
     }
   }
