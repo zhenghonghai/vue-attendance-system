@@ -49,7 +49,7 @@ export default {
       systemManage.login(params).then(response => {
         if (response.data) {
           console.log('密码正确')
-          // this.$router.push({ path: 'register' })
+          this.$router.push({ path: 'home' })
         } else {
           alert('账号或密码错误')
         }
