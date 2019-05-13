@@ -4,12 +4,13 @@ import HelloWorld from '@/components/HelloWorld'
 import Login from '@/components/systemManage/login/Login'
 import Register from '@/components/systemManage/login/Register'
 import Home from '@/components/systemManage/home/index'
+import PersonalInfo from '@/components/systemManage/personalInfo/personalInfo'
+import Changepassword from '@/components/systemManage/personalInfo/changepassword'
 
 Vue.use(Router)
 
 export default new Router({
-  routes: [
-    {
+  routes: [{
       path: '/',
       name: 'Login',
       component: Login
@@ -22,7 +23,18 @@ export default new Router({
     {
       path: '/home',
       name: 'Home',
-      component: Home
-    }
+      component: Home,
+      children: [{
+          path: '/personalInfo',
+          component: PersonalInfo,
+        },
+        {
+          path: '/changepassword',
+          component: Changepassword,
+        }
+      ]
+
+    },
+
   ]
 })

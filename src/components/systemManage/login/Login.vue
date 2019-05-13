@@ -46,10 +46,20 @@ export default {
         username: this.form.username,
         password: this.form.password
       }
+      console.log(this.form.username)
+      console.log(this.form.password)
       systemManage.login(params).then(response => {
         if (response.data) {
           console.log('密码正确')
-          this.$router.push({ path: 'home' })
+          console.log(this.form.username)
+          console.log(this.form.password)
+          this.$router.push({
+            name: 'Home',
+            params: {
+              username: this.form.username,
+              password: this.form.password
+            }
+          })
         } else {
           alert('账号或密码错误')
         }
