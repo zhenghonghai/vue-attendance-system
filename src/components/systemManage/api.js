@@ -30,6 +30,16 @@ const systemManage = {
       params: data
     })
   },
+  // ----------
+  // 个人信息模块
+  loadDataPersonalInfo(obj) {
+    let data = obj
+    return Ajax({
+      url: '/api/personalInfo',
+      method: 'post',
+      params: data
+    })
+  }
 }
 
 export default systemManage

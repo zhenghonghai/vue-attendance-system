@@ -5,7 +5,7 @@ import Login from '@/components/systemManage/login/Login'
 import Register from '@/components/systemManage/login/Register'
 import Home from '@/components/systemManage/home/index'
 import PersonalInfo from '@/components/systemManage/personalInfo/personalInfo'
-import Changepassword from '@/components/systemManage/personalInfo/changepassword'
+import ChangePassword from '@/components/systemManage/personalInfo/changepassword'
 
 Vue.use(Router)
 
@@ -25,16 +25,22 @@ export default new Router({
       name: 'Home',
       component: Home,
       children: [{
-          path: '/personalInfo',
+          path: 'personalInfo',
           component: PersonalInfo,
+          name: 'personalInfo',
+          props: {
+            // username: this.$route.params.username
+          },
+          meta: {
+            keepAlive: true
+          }
         },
         {
-          path: '/changepassword',
-          component: Changepassword,
+          path: 'changePassword',
+          name: 'changePassword',
+          component: ChangePassword,
         }
       ]
-
     },
-
   ]
 })

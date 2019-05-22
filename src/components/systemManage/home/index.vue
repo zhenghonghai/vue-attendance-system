@@ -9,10 +9,10 @@
               <span slot="title">个人信息</span>
               <el-menu-item-group>
                 <el-menu-item index="1-1">
-                  <router-link to="/personalInfo">查看个人信息</router-link>
+                  <router-link :to="{name:'personalInfo'}">查看个人信息</router-link>
                 </el-menu-item>
                 <el-menu-item index="1-2">
-                  <router-link to="/changepassword">修改密码</router-link>
+                  <router-link :to="{name:'changePassword',query:{username:username,password:password}}">修改密码</router-link>
                 </el-menu-item>
               </el-menu-item-group>
             </el-submenu>
@@ -53,6 +53,7 @@
   </div>
 </template>
 <script>
+import PersonalInfo from '@/components/systemManage/personalInfo/personalInfo'
 export default {
   name: 'home',
   data() {
@@ -63,9 +64,9 @@ export default {
     }
   },
 
-  // init() {
-  //   console.log(username + '--------' + password)
-  // },
+  created() {
+    console.log(this.username + '--------' + this.password)
+  },
   methods: {
     handleOpen(key, keyPath) {
       console.log(key, keyPath)
