@@ -40,30 +40,28 @@ export default {
       }
     }
   },
+  created() {
+    this.form.username = this.$route.params.username
+    this.form.password = this.$route.params.password
+  },
   methods: {
     login() {
       var params = {
         username: this.form.username,
         password: this.form.password
       }
-      // console.log(this.form.username)
-      // console.log(this.form.password)
       systemManage.login(params).then(response => {
         if (response.data) {
-          // console.log('密码正确')
-          // console.log(this.form.username)
-          // console.log(this.form.password)
-          this.$router.push({
-            name: 'Home',
-            params: {
-              username: this.form.username,
-              password: this.form.password
-            }
-          })
+          this.$router.push('/home')
+          this.$options.methods.saveAuth(params)
         } else {
           alert('账号或密码错误')
         }
       })
+    },
+    saveAuth: function(form) {
+      // this.$store.commit('saveInfo')
+      this.$store.dispatch('saveInfo', form)
     }
   }
 }

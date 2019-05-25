@@ -65,7 +65,13 @@ export default {
       systemManage.register(params).then(response => {
         if (response.data) {
           alert('注册成功')
-          this.$router.push({ path: '/' })
+          this.$router.push({
+            name: 'Login',
+            params: {
+              username: params.username,
+              password: params.password
+            }
+          })
         } else {
           alert('手机号已经注册过了，请更换手机号')
         }

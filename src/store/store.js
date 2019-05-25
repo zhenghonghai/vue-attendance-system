@@ -5,21 +5,26 @@ Vue.use(Vuex)
 
 export const store = new Vuex.Store({
   state: {
-    info: {
-      username: '郑宏海',
-      password: '1234'
+    auth: {
+      username: '',
+      password: ''
     }
   },
   getters: {
-    getInfo: (state) => {
-      return state.info
+    getAuth: (state) => {
+      return state.auth
     }
   },
   mutations: {
-    saveInfo: (state) => {
-      state.info.username = '高永彤'
-      state.info.password = '4321'
-      // return state.info
+    saveAuth: (state, payload) => {
+      state.auth.username = payload.username
+      state.auth.password = payload.password
+    }
+  },
+  actions: {
+    saveAuth: (context, payload) => {
+      context.commit("saveAuth", payload)
     }
   }
+
 })

@@ -4,7 +4,6 @@
  */
 // 引入拦截器
 import Ajax from '@/utils/fetch'
-import Qs from 'qs'
 
 const systemManage = {
 

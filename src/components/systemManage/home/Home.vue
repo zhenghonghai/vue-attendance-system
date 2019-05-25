@@ -64,16 +64,16 @@ export default {
     }
   },
 
-  created() {
-    console.log(this.username + '--------' + this.password)
-  },
+  // created() {
+  //   console.log(this.username + '--------' + this.password)
+  // },
   methods: {
-    handleOpen(key, keyPath) {
-      console.log(key, keyPath)
-    },
-    handleClose(key, keyPath) {
-      console.log(key, keyPath)
-    }
+    // handleOpen(key, keyPath) {
+    //   console.log(key, keyPath)
+    // },
+    // handleClose(key, keyPath) {
+    //   console.log(key, keyPath)
+    // }
   }
 }
 </script>
@@ -102,22 +102,5 @@ export default {
   /* line-height: 160px; */
   height: 750px;
 }
-/* 
-body > .el-container {
-  margin-bottom: 40px;
-}
-
-.el-container:nth-child(5) .el-aside,
-.el-container:nth-child(6) .el-aside {
-  line-height: 260px;
-}
-
-.el-container:nth-child(7) .el-aside {
-  line-height: 320px;
-}
-.el-menu-vertical-demo:not(.el-menu--collapse) {
-  width: 200px;
-  min-height: 400px;
-} */
 </style>
 
