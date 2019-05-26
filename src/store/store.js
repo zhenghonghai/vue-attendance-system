@@ -6,6 +6,7 @@ Vue.use(Vuex)
 export const store = new Vuex.Store({
   state: {
     auth: {
+      id: '',
       username: '',
       password: ''
     }
@@ -17,6 +18,7 @@ export const store = new Vuex.Store({
   },
   mutations: {
     saveAuth: (state, payload) => {
+      state.auth.id = payload.id
       state.auth.username = payload.username
       state.auth.password = payload.password
     }

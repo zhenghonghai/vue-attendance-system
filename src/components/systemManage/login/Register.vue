@@ -63,17 +63,17 @@ export default {
         tel: this.form.tel
       }
       systemManage.register(params).then(response => {
-        if (response.data) {
-          alert('注册成功')
-          this.$router.push({
-            name: 'Login',
-            params: {
-              username: params.username,
-              password: params.password
-            }
-          })
-        } else {
-          alert('手机号已经注册过了，请更换手机号')
+        if ((response.status = 200)) {
+          alert(response.data)
+          if (response.data == '注册成功') {
+            this.$router.push({
+              name: 'Login',
+              params: {
+                username: params.username,
+                password: params.password
+              }
+            })
+          }
         }
       })
     }

@@ -31,10 +31,19 @@ const systemManage = {
   },
   // ----------
   // 个人信息模块
-  loadDataPersonalInfo(obj) {
+  queryPersonMessage(obj) {
     let data = obj
     return Ajax({
-      url: '/api/personalInfo',
+      url: '/api/home/personMessage',
+      method: 'post',
+      params: data
+    })
+  },
+  // 修改密码
+  changePassword(obj) {
+    let data = obj
+    return Ajax({
+      url: '/api/home/changePassword',
       method: 'post',
       params: data
     })
