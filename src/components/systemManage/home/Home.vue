@@ -9,10 +9,12 @@
               <span slot="title">个人信息</span>
               <el-menu-item-group>
                 <el-menu-item index="1-1">
-                  <router-link :to="{name:'PersonMessage'}">查看个人信息</router-link>
+                  <router-link :to="{name:'PersonMessage'}"
+                    class="a">查看个人信息</router-link>
                 </el-menu-item>
                 <el-menu-item index="1-2">
-                  <router-link :to="{name:'ChangePassword'}">修改密码</router-link>
+                  <router-link :to="{name:'ChangePassword'}"
+                    class="a">修改密码</router-link>
                 </el-menu-item>
               </el-menu-item-group>
             </el-submenu>
@@ -72,6 +74,10 @@ export default {
 </script>
 
 <style>
+.a {
+  text-decoration: none;
+  color: #000;
+}
 .el-header,
 .el-footer {
   background-color: #b3c0d1;

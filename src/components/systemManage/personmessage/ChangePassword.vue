@@ -17,7 +17,7 @@
     <el-form-item>
       <el-button type="primary"
         @click="submitForm()">提交</el-button>
-      <el-button @click="resetForm('form')">重置</el-button>
+      <el-button @click="resetForm()">重置</el-button>
     </el-form-item>
   </el-form>
 </template>
@@ -41,11 +41,18 @@ export default {
         id: this.id,
         oldPassword: this.form.oldPassword,
         newPassword: this.form.newPassword,
-        changePassword: this.form.checkPassword
+        checkPassword: this.form.checkPassword
       }
       systemManage.changePassword(params).then(response => {
-        console.log(response)
+        if (response.status == 200) {
+          alert(response.data)
+        }
       })
+    },
+    resetForm() {
+      this.form.oldPassword = ''
+      this.form.newPassword = ''
+      this.form.checkPassword = ''
     }
   }
 }
