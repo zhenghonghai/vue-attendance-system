@@ -5,6 +5,7 @@ import Register from '@/components/systemManage/login/Register'
 import Home from '@/components/systemManage/home/Home'
 import PersonMessage from '@/components/systemManage/personmessage/PersonMessage'
 import ChangePassword from '@/components/systemManage/personmessage/ChangePassword'
+import CheckedIn from '@/components/systemManage/checkedIn/checkedIn'
 
 Vue.use(Router)
 
@@ -31,6 +32,10 @@ export default new Router({
         path: 'changePassword',
         name: 'ChangePassword',
         component: ChangePassword
+      }, {
+        path: 'checkedIn',
+        name: 'CheckedIn',
+        component: CheckedIn
       }]
     }
   ],

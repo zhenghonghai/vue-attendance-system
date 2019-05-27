@@ -18,10 +18,17 @@
                 </el-menu-item>
               </el-menu-item-group>
             </el-submenu>
-            <el-menu-item index="2">
-              <i class="el-icon-menu"></i>
-              <span slot="title">考勤信息</span>
-            </el-menu-item>
+
+            <el-submenu index="2">
+              <span slot="title">签到管理</span>
+              <el-menu-item-group>
+                <el-menu-item index="2-1">
+                  <router-link :to="{name:'CheckedIn'}"
+                    class="a">签到</router-link>
+                </el-menu-item>
+              </el-menu-item-group>
+            </el-submenu>
+
             <el-menu-item index="3">
               <i class="el-icon-document"></i>
               <span slot="title">请假信息</span>
@@ -62,7 +69,8 @@ export default {
     return {
       username: this.$store.getters.getAuth.username,
       password: this.$store.getters.getAuth.password,
-      isCollapse: false
+      isCollapse: false,
+      authList: []
     }
   },
   // created() {
